@@ -23,7 +23,7 @@ public class SkyLink {
         }
     }
 
-    public static String nombEstacion(int n) {
+    public static String estNomb(int n) {
         switch (n) {
             case 0:
                 return "Río Seco";
@@ -83,7 +83,6 @@ public class SkyLink {
     }
 
     public static void inicializarGrafo() {
-        System.out.println("wiwi");
         String ruta = SkyLink.class.getResource("input.txt").getPath();
         File input = new File(ruta);
         try {
@@ -128,15 +127,14 @@ public class SkyLink {
     static int[] padreDijkstra;
 
     public static void optimizacionTiempo(int nodoInicial, int nodoObjetivo) {
-        dist = new int[tamanioGrafo()];
-        padreDijkstra = new int[tamanioGrafo()];
+        dist = new int[grafo.length];
+        padreDijkstra = new int[grafo.length];
         Arrays.fill(dist, INF);
         Comparator<int[]> comparator = (a, b) -> a[0] - b[0];
         PriorityQueue<int[]> pq = new PriorityQueue<>(comparator);
-        int[] arr = { 0, nodoInicial };
         dist[nodoInicial] = 0;
         padreDijkstra[nodoInicial] = -1;
-        pq.add(arr);
+        pq.add(new int[] { 0, nodoInicial });
         while (!pq.isEmpty()) {
             int pesoActual = pq.peek()[0];
             int nodoActual = pq.peek()[1];
@@ -150,95 +148,91 @@ public class SkyLink {
                 if (siguientePeso < dist[siguienteNodo]) {
                     dist[siguienteNodo] = siguientePeso;
                     padreDijkstra[siguienteNodo] = nodoActual;
-                    int[] arr2 = { siguientePeso, siguienteNodo };
-                    pq.add(arr2);
+                    pq.add(new int[] { siguientePeso, siguienteNodo });
                 }
             }
         }
         if (dist[nodoObjetivo] == INF) {
-            System.out.println("No se puede llegar de " + nombEstacion(nodoInicial) + " a " + nombEstacion(nodoObjetivo));
+            System.out.println("No se puede llegar de " + estNomb(nodoInicial) + " a " + estNomb(nodoObjetivo));
         } else {
-            System.out.println(
-                    "El tiempo mínimo para llegar a " + nombEstacion(nodoObjetivo) + " es " + dist[nodoObjetivo] + " minutos.");
-            System.out.print("El recorrido esta conformado por las estaciones: " + nombEstacion(nodoObjetivo));
+            System.out.println("El tiempo mínimo para llegar a " + estNomb(nodoObjetivo) + " es " + dist[nodoObjetivo]
+                    + " minutos.");
+            System.out.print("El recorrido esta conformado por las estaciones: " + estNomb(nodoObjetivo));
             int i = nodoObjetivo;
             while (padreDijkstra[i] != -1) {
-                System.out.print(", " + nombEstacion(padreDijkstra[i]));
+                System.out.print(", " + estNomb(padreDijkstra[i]));
                 i = padreDijkstra[i];
             }
-        }
-    }
-
-    // TODO mala implementación de los transbordos
-    public static void optimizacionPrecio(int nodoInicial, int nodoObjetivo) {
-        if (nodoInicial == nodoObjetivo) {
-            System.out.println("Ya te encuentras en tu destino, el precio a pagar es 0 Bs");
-        } else {
-            bfs(nodoInicial, nodoObjetivo);
+            System.out.println();
         }
     }
 
     static int[] nivel;
     static boolean[] vis;
     static int[] padre;
-    static int[] costo;
 
-    public static void bfs(int nodoInicial, int nodoObjetivo) {
-        Queue<Integer> kiwi = new LinkedList<>(); // Se instancia la cola de nodos a explorar
-        vis = new boolean[tamanioGrafo()]; // Se instancia el arreglo de visitados
-        padre = new int[tamanioGrafo()];
-        costo = new int[tamanioGrafo()];
-
-        int nodoAnterior = 0;
-        int nodoActual = nodoInicial;
-        kiwi.offer(nodoInicial); // Agregamos a la cola el nodo inicial
-        padre[nodoInicial] = nodoInicial;
-        costo[nodoInicial] = pAbordaje; // Establecemos el nivel 0 para el nodo inicial
-        while (!kiwi.isEmpty()) { // Mientras la cola no se encuentre vacia
-            int ultimaArista = tatiInt(nodoActual, nodoActual);
-            nodoActual = kiwi.poll(); // Se empieza2 a explorar con el frente de la cola
-            nodoAnterior = padre[nodoActual];
-            System.out.println("Nodo anterior es: " + nodoAnterior + " y nodo actual es: " + nodoActual);
-
-            // if (!vis[nodoActual]) { // Comprobamos que no se esté re visitando un nodo
-            vis[nodoActual] = true; // Marcamos el nodo como visitado
-
-            if (ultimaArista != tatiInt(nodoAnterior, nodoActual)) {
-                costo[nodoActual] = costo[nodoAnterior] + pTransbordo;
-            } else {
-                costo[nodoActual] = costo[nodoAnterior];
-            }
-            ultimaArista = tatiInt(nodoAnterior, nodoActual);
-            System.out.println("Precio del nodo actua: " + costo[nodoActual]);
-            // System.out.println("Nodo Actual es " + nodoActual);
-            for (int i = 0; i < grafo[nodoActual].size(); i++) { // Se guardan a todos los nodos relacionados
-                int vecino = grafo[nodoActual].get(i)[0];
-                if (!vis[vecino]) {
-                    kiwi.offer(vecino); // Los nodos relacionados que no se hayan visitado se agregan a la cola
-                    padre[vecino] = nodoActual;
+    public static void optimizacionPrecio(int nodoInicial, int nodoObjetivo) {
+        if (nodoInicial == nodoObjetivo) {
+            System.out.println("Ya te encuentras en tu destino, el precio a pagar es 0 Bs");
+        } else {
+            Queue<Integer> kiwi = new LinkedList<>();
+            nivel = new int[grafo.length];
+            vis = new boolean[grafo.length];
+            kiwi.offer(nodoInicial);
+            nivel[nodoInicial] = 1;
+            padre = new int[grafo.length];
+            boolean nodoEncontrado = false;
+            while (!kiwi.isEmpty() && !nodoEncontrado) {
+                int nodoActual = kiwi.poll();
+                if (nodoActual == nodoObjetivo) {
+                    nodoEncontrado = true;
+                    vis[nodoActual] = true;
+                    break;
+                }
+                if (!vis[nodoActual]) {
+                    vis[nodoActual] = true;
+                    for (int i = 0; i < grafo[nodoActual].size(); i++) {
+                        int vecino = grafo[nodoActual].get(i)[0];
+                        if (!vis[vecino]) {
+                            kiwi.offer(vecino);
+                            if (nivel[vecino] == 0) {
+                                nivel[vecino] = nivel[nodoActual] + 1;
+                                padre[vecino] = nodoActual;
+                            }
+                        }
+                    }
                 }
             }
-            // }
-        }
-        System.out.println(costo[nodoObjetivo]);
-    }
-
-    public static boolean tatiBoolean(int nodoA, int nodoB) {
-        for (int i = 0; i < numLineas; i++) {
-            if (lineas[nodoA].contains(i) && lineas[nodoB].contains(i)) {
-                return true;
+            if (!vis[nodoObjetivo]) {
+                System.out.println("No se puede llegar de  " + estNomb(nodoInicial) + " a " + estNomb(nodoObjetivo));
+            } else {
+                Set<Integer> set = new HashSet<>();
+                System.out.print("El camino comprende las estaciones " + estNomb(nodoObjetivo));
+                int nodoActual = nodoObjetivo;
+                for (int i = 1; i < nivel[nodoObjetivo]; i++) {
+                    set.add(mismaLinea(nodoActual, padre[nodoActual]));
+                    nodoActual = padre[nodoActual];
+                    System.out.print(", " + estNomb(nodoActual));
+                }
+                int n = set.size();
+                int costo = 0;
+                for (int i = 0; i < n; i++) {
+                    if (i != 0) {
+                        costo += pTransbordo;
+                    } else {
+                        costo += pAbordaje;
+                    }
+                }
+                System.out.println(". Con un precio total de " + ((double) (costo) / 100) + "Bs");
             }
         }
-        return false;
     }
 
-    public static int tatiInt(int nodoA, int nodoB) { // pasamos de boolean a int y comprobamos si devuelve algo bien o
-                                                      // no
+    public static int mismaLinea(int nodoA, int nodoB) {
         for (int i = 0; i < numLineas; i++) {
             if (lineas[nodoA].contains(i) && lineas[nodoB].contains(i)) {
                 return i;
-            } // TODO verifica la ultima conexion para ver si cambiamos la arista de linea o
-              // no
+            }
         }
         return -1;
     }
@@ -246,7 +240,7 @@ public class SkyLink {
     // TEST
 
     public static void verificarSetLineas() {
-        for (int i = 0; i < 26; i++) {
+        for (int i = 0; i < grafo.length; i++) {
             Integer[] arr = lineas[i].toArray(new Integer[0]);
             System.out.print("El nodo " + i + " pertenece a las líneas: ");
             mostrarArreglo(arr);
@@ -287,4 +281,3 @@ public class SkyLink {
         }
     }
 }
-

@@ -35,6 +35,7 @@ public class Menu {
                 menuPrecio();
                 break;
             case 3:
+                clc();
                 System.exit(0);
                 break;
             case 4:
@@ -124,7 +125,7 @@ public class Menu {
 
     public static void mostrarEstaciones() {
         for (int i = 0; i < tamanioGrafo; i++) {
-            System.out.println(i+" - " + SkyLink.nombEstacion(i));
+            System.out.println(i+" - " + SkyLink.estNomb(i));
         }
     }
 
