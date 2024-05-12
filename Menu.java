@@ -123,8 +123,9 @@ public class Menu {
     }
 
     public static void mostrarEstaciones() {
-        System.out.println(
-                "0 - Río Seco\n1 - UPEA\n2 - Plaza La Paz\n3 - Plaza La Libertad\n4 - 16 de Julio\n5 - Cementerio\n6 - Central\n7 - Armentia\n8 - Periférico\n9 - Villarroel\n10 - Busch\n11 - Triangular\n12 - Del Poeta\n13 - Las Villas\n14 - Prado\n15 - Teatro al Aire Libre\n16 - Libertador\n17 - Alto Obrajes\n18 - Obrajes\n19 - Irpavi\n20 - Sopocachi\n21 - Buenos Aires\n22 - Mirador\n23 - 6 de Marzo\n24 - Faro Murillo\n25 - Obelisco");
+        for (int i = 0; i < tamanioGrafo; i++) {
+            System.out.println(i+" - " + SkyLink.nombEstacion(i));
+        }
     }
 
     public static void back() {

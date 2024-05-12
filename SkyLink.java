@@ -23,6 +23,65 @@ public class SkyLink {
         }
     }
 
+    public static String nombEstacion(int n) {
+        switch (n) {
+            case 0:
+                return "Río Seco";
+            case 1:
+                return "UPEA";
+            case 2:
+                return "Plaza La Paz";
+            case 3:
+                return "Plaza La Libertad";
+            case 4:
+                return "16 de Julio";
+            case 5:
+                return "Cementerio";
+            case 6:
+                return "Central";
+            case 7:
+                return "Armentia";
+            case 8:
+                return "Periférico";
+            case 9:
+                return "Villarroel";
+            case 10:
+                return "Busch";
+            case 11:
+                return "Triangular";
+            case 12:
+                return "Del Poeta";
+            case 13:
+                return "Las Villas";
+            case 14:
+                return "Prado";
+            case 15:
+                return "Teatro al Aire Libre";
+            case 16:
+                return "Libertador";
+            case 17:
+                return "Alto Obrajes";
+            case 18:
+                return "Obrajes";
+            case 19:
+                return "Irpavi";
+            case 20:
+                return "Sopocachi";
+            case 21:
+                return "Buenos Aires";
+            case 22:
+                return "Mirador";
+            case 23:
+                return "6 de Marzo";
+            case 24:
+                return "Faro Murillo";
+            case 25:
+                return "Obelisco";
+            default:
+                return "Error en el id de la estación, verifique el metodo nombEstacion en la Clase SkyLink";
+        }
+    }
+
     public static void inicializarGrafo() {
         System.out.println("wiwi");
         String ruta = SkyLink.class.getResource("input.txt").getPath();
@@ -66,14 +125,17 @@ public class SkyLink {
 
     static int INF = Integer.MAX_VALUE;
     static int[] dist;
+    static int[] padreDijkstra;
 
     public static void optimizacionTiempo(int nodoInicial, int nodoObjetivo) {
         dist = new int[tamanioGrafo()];
+        padreDijkstra = new int[tamanioGrafo()];
         Arrays.fill(dist, INF);
         Comparator<int[]> comparator = (a, b) -> a[0] - b[0];
         PriorityQueue<int[]> pq = new PriorityQueue<>(comparator);
         int[] arr = { 0, nodoInicial };
         dist[nodoInicial] = 0;
+        padreDijkstra[nodoInicial] = -1;
         pq.add(arr);
         while (!pq.isEmpty()) {
             int pesoActual = pq.peek()[0];
@@ -87,15 +149,23 @@ public class SkyLink {
                 int siguientePeso = pesoActual + peso;
                 if (siguientePeso < dist[siguienteNodo]) {
                     dist[siguienteNodo] = siguientePeso;
+                    padreDijkstra[siguienteNodo] = nodoActual;
                     int[] arr2 = { siguientePeso, siguienteNodo };
                     pq.add(arr2);
                 }
             }
         }
         if (dist[nodoObjetivo] == INF) {
-            System.out.println("No se puede llegar al nodo" + nodoObjetivo);
+            System.out.println("No se puede llegar de " + nombEstacion(nodoInicial) + " a " + nombEstacion(nodoObjetivo));
         } else {
-            System.out.println("El tiempo mínimo para llegar al nodo " + nodoObjetivo + " es " + dist[nodoObjetivo] + " minutos uwu");
+            System.out.println(
+                    "El tiempo mínimo para llegar a " + nombEstacion(nodoObjetivo) + " es " + dist[nodoObjetivo] + " minutos.");
+            System.out.print("El recorrido esta conformado por las estaciones: " + nombEstacion(nodoObjetivo));
+            int i = nodoObjetivo;
+            while (padreDijkstra[i] != -1) {
+                System.out.print(", " + nombEstacion(padreDijkstra[i]));
+                i = padreDijkstra[i];
+            }
         }
     }
 
@@ -218,89 +288,3 @@ public class SkyLink {
     }
 }
 
-/*
- * class Edge {
- * int dest, weight;
- * 
- * public Edge(int dest, int weight) {
- * this.dest = dest;
- * this.weight = weight;
- * }
- * }
- * 
- * public class Main {
- * static final int INF = Integer.MAX_VALUE;
- * 
- * public static int dijkstra(int start, List<Edge>[] adj, int[] dist, int
- * target) {
- * PriorityQueue<Edge> pq = new PriorityQueue<>(Comparator.comparingInt(e ->
- * e.weight));
- * pq.add(new Edge(start, 0));
- * dist[start] = 0;
- * 
- * while (!pq.isEmpty()) {
- * int current_node = pq.poll().dest;
- * int current_distance = dist[current_node];
- * 
- * if (current_node == target) {
- * return current_distance;
- * }
- * 
- * for (Edge edge : adj[current_node]) {
- * int next_node = edge.dest;
- * int weight = edge.weight;
- * int next_distance = current_distance + weight;
- * 
- * if (next_distance < dist[next_node]) {
- * dist[next_node] = next_distance;
- * pq.add(new Edge(next_node, next_distance));
- * }
- * }
- * }
- * 
- * return INF;
- * }
- * 
- * public static void main(String[] args) throws IOException {
- * BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
- * PrintWriter out = new PrintWriter(System.out);
- * 
- * String[] line = br.readLine().split(" ");
- * int n = Integer.parseInt(line[0]);
- * int m = Integer.parseInt(line[1]);
- * 
- * List<Edge>[] adj = new ArrayList[n];
- * for (int i = 0; i < n; i++) {
- * adj[i] = new ArrayList<>();
- * }
- * 
- * int[] dist = new int[n];
- * Arrays.fill(dist, INF);
- * 
- * for (int i = 0; i < m; i++) {
- * line = br.readLine().split(" ");
- * int u = Integer.parseInt(line[0]);
- * int v = Integer.parseInt(line[1]);
- * int w = Integer.parseInt(line[2]);
- * 
- * adj[u].add(new Edge(v, w));
- * adj[v].add(new Edge(u, w));
- * }
- * 
- * int start = Integer.parseInt(br.readLine().trim());
- * 
- * int target = 4; // El nodo final es 4 según el ejemplo proporcionado
- * 
- * int finalCost = dijkstra(start, adj, dist, target);
- * 
- * if (finalCost == INF) {
- * out.println("No es posible llegar al nodo " + target);
- * } else {
- * out.println("Desde " + start + " deberíamos llegar a " + target +
- * " con un peso de " + finalCost);
- * }
- * 
- * out.flush();
- * }
- * }
- */
