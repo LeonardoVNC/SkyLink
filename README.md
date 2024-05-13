@@ -14,6 +14,11 @@ Contrario a lo que se esperaría de un nuevo e innovador tipo de transporte, est
 
 Con SkyLink buscamos encontrar el camino más cómodo posible para poder transportarse en el teleférico en cualquiera de las líneas habilitadas, esto de una manera rápida y sencilla para que cada usuario pueda comparar sus opciones en un instante. Con esto buscamos tener en cuenta la comodidad del pasajero tanto en cuestión de tiempo como en cuestión de dinero, buscando la ruta menos compleja para que el usuario pueda llegar a su destino de la mejor manera posible.
 
+<div id="lineas">
+  <ul align="center">
+    <img height="400" width="500" alt="PNG" src="https://www.miteleferico.bo/_nuxt/img/mapa_mt_nuevo.6f8194e.png">
+    </ul>
+</div>
 
 ## Instalación del Programa
 Para instalar el programa adecuadamente se deben seguir los siguiente pasos:
