@@ -59,5 +59,11 @@ Este menú es bastante similar al menú anterior, con la diferencia de que al in
 ### Menú Dev
 Este es un menú orientado a la visualización del estado actual del grafo y del set que contiene las líneas a las que pertenece cada nodo. Su función radica en hacer seguimiento del estado de estas estructuras de datos, es especialmente útil cuando se hacen modificaciones al input, cambios tales como adición de nuevas líneas, estaciones o conexiones.
 
+### 4. Conclusión
+La conclusión del proyecto SkyLink destaca su papel fundamental en la mejora del transporte público en La Paz. Al emplear algoritmos avanzados como BFS y Dijkstra, esta aplicación ofrece a los usuarios una herramienta poderosa para encontrar rutas óptimas en el complejo sistema de teleférico de la ciudad. La meticulosa guía de instalación y puesta en marcha asegura que los usuarios puedan aprovechar plenamente la funcionalidad de SkyLink, mientras que la explicación detallada de los algoritmos subyacentes permite una comprensión más profunda de su funcionamiento.
+
+La interfaz intuitiva de la aplicación facilita a los usuarios la selección de sus puntos de partida y destino, ya sea priorizando el tiempo o el costo. Esto se traduce en una experiencia de usuario mejorada, donde los viajeros pueden tomar decisiones informadas sobre su movilidad en la ciudad. Además, la inclusión de opciones específicas para diferentes tipos de usuarios, como estudiantes, refleja la atención a la diversidad de necesidades dentro de la población.
+
+En última instancia, SkyLink aspira a no solo optimizar la eficiencia del transporte público, sino también a mejorar la calidad de vida de los ciudadanos de La Paz al facilitar sus desplazamientos diarios. Al ofrecer una solución integral y accesible, este proyecto representa un paso significativo hacia la creación de una ciudad más conectada, eficiente y habitable.
 
 Con esto acaba la guía de uso de SkyNet, espero que disfrutes explorando por nuestro menú viendo las funciones que tiene y que te sea de gran ayuda.
