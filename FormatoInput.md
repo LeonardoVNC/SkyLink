@@ -28,16 +28,16 @@ En esta sección se ingresa una secuencia de pares de números *_n_* y *_m_*. Do
 Un nodo puede pertenecer a varias líneas, estos nodos representan las estaciones que sirven como intersección entre líneas.
 Esta sección del input se terminará con el ingreso de un _-1_
 
+### Creación del Grafo Ponderado
+Esta sección se ingresa una secuencia de _x_ líneas, donde _x_ deberá ser igual al número de aristas que se introdujo en la primera sección del programa.
+
+Se ingresan 3 datos por línea, el primer y el segundo dato corresponden a los identificadores numéricos de un par de nodos. El tercer dato corresponde al peso que se le asigna al trayecto entre estos 2 nodos, en el caso de este programa, el peso representa tiempo de viaje medido en minutos.
+
 <div id="lineas">
   <ul align="center">
     <img height="400" width="500" alt="JPG" src="https://i.postimg.cc/rFy0BFCh/photo1715609299.jpg">
     </ul>
 </div>
-
-### Creación del Grafo Ponderado
-Esta sección se ingresa una secuencia de _x_ líneas, donde _x_ deberá ser igual al número de aristas que se introdujo en la primera sección del programa.
-
-Se ingresan 3 datos por línea, el primer y el segundo dato corresponden a los identificadores numéricos de un par de nodos. El tercer dato corresponde al peso que se le asigna al trayecto entre estos 2 nodos, en el caso de este programa, el peso representa tiempo de viaje medido en minutos.
 
 ## Consideraciones
 Para facilitar la visualización del estado actual del grafo se agregaron varios métodos de prueba, entre los cuales se incluyen la visualización del grafo en formato de listas y un método que muestra la distribución de las líneas, ambos pueden ser utilizados directamente desde el menú ingresando a la opción "DevTest".
