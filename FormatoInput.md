@@ -1,6 +1,7 @@
 # Guía de edición del Programa
 SkyLink fue desarrollado con la idea de que el programa debe poder actualizarse fácilmente, esto para no necesitar de grandes modificaciones en caso de que se cambie la información que trata, es por esto que toda la información del grafo empleado para el seguimiento de las líneas del teleférico es ingresada desde el archivo [input](input.txt).
 
+## Input
 Input es empleado para crear las estructuras de datos e ingresar toda la información necesaria para el funcionamiento correcto del programa. Se divide de la siguiente manera:
 ### Estructura General del Grafo
 Esta sección está conformada por 3 datos, el número de nodos, el número de aristas y el número de líneas.
@@ -29,7 +30,7 @@ Esta sección del input se terminará con el ingreso de un _-1_
 
 <div id="lineas">
   <ul align="center">
-    <img height="400" width="500" alt="PNG" src="https://www.miteleferico.bo/_nuxt/img/mapa_mt_nuevo.6f8194e.png">
+    <img height="400" width="500" alt="JPG" src="https://i.postimg.cc/rFy0BFCh/photo1715609299.jpg">
     </ul>
 </div>
 
