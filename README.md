@@ -1,10 +1,10 @@
 # SkyLink
 ## Integrantes:
-- Aramayo Gonzales Tatiana Jael
-- Camargo Orozco Luciana Fernanda
-- Quisbert Moya Patricia Andrea
-- Sonco Villegas Melany Andrea
-- Vacaflor Nina Leonardo Emanuel
+- Aramayo Gonzales Tatiana Jael.
+- Camargo Orozco Luciana Fernanda.
+- Quisbert Moya Patricia Andrea.
+- Sonco Villegas Melany Andrea.
+- Vacaflor Nina Leonardo Emanuel.
 ## ¿De qué se trata el proyecto? 
 Hoy en día, una de las principales problemáticas que existen dentro de la ciudad de La Paz es hallar un modo de movilizarse a lo largo de toda la urbe paceña. Cada persona tiene el tiempo contado y, por estadística, tenemos que la mayoría de la población no cuenta con un automóvil propio para poder movilizarse, tanto dentro como fuera de la ciudad, por lo que se implementaron nuevos tipos de transporte acorde a las distintas necesidades de la población, habilitando con ello el servicio de transporte público "Mi Teleférico".
 
