@@ -18,27 +18,28 @@ Con SkyLink buscamos encontrar el camino más cómodo posible para poder transpo
 ## Instalación del Programa
 Para instalar el programa adecuadamente se deben seguir los siguiente pasos:
 
-#####  <summary><h2 style="display: inline-block"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/217d5ea0-623d-40b1-9b31-027b904a5f15/ddjrgww-846ce429-3b0d-4ad8-bf6d-ac52dfe48201.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzIxN2Q1ZWEwLTYyM2QtNDBiMS05YjMxLTAyN2I5MDRhNWYxNVwvZGRqcmd3dy04NDZjZTQyOS0zYjBkLTRhZDgtYmY2ZC1hYzUyZGZlNDgyMDEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.G0SE64OMLNEGI8vXb21JRl13RMfER1VP8Kh2Ig3oJaQ" width=25px>  Instalar Visual Studio Code</h2></summary>
+####  <summary><h2 style="display: inline-block"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/217d5ea0-623d-40b1-9b31-027b904a5f15/ddjrgww-846ce429-3b0d-4ad8-bf6d-ac52dfe48201.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzIxN2Q1ZWEwLTYyM2QtNDBiMS05YjMxLTAyN2I5MDRhNWYxNVwvZGRqcmd3dy04NDZjZTQyOS0zYjBkLTRhZDgtYmY2ZC1hYzUyZGZlNDgyMDEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.G0SE64OMLNEGI8vXb21JRl13RMfER1VP8Kh2Ig3oJaQ" width=25px>  Instalar Visual Studio Code</h2></summary>
 Visual Studio Code es un editor de código fuente que fue desarrollado por Microsoft. Es gratuito y de código abierto, además de multiplataforma, por lo que está disponible para Windows, macOs y Linux.
 
 Instalaremos esta aplicación para ejectuar el programa propuesto en este repositorio.
 
 Para instalar Visual Studio Code puede ver el siguiente [video guía](https://youtu.be/X_Z7d04x9-E?si=_RdSWXTya-nPbU4I) o dirigirse a la [Página oficial de Visual Studio Code](https://code.visualstudio.com/).
 
-#####  <summary><h2 style="display: inline-block"><img src="https://cdn.iconscout.com/icon/free/png-256/free-java-23-225999.png" width=25px>  Instalar el compilador de Java </h2></summary>  
+####  <summary><h2 style="display: inline-block"><img src="https://cdn.iconscout.com/icon/free/png-256/free-java-23-225999.png" width=25px>  Instalar el compilador de Java </h2></summary>  
 El programa propuesto se encuentra escrito en Java, por lo que será necesario tener instalado un compilador de Java para poder ejecutar el código desde su ordenador. Para esto puede seguir el siguiente [video guía](https://www.youtube.com/watch?v=5voE8tvtVV8)
 
-#####  <summary><h2 style="display: inline-block"><img src="https://w7.pngwing.com/pngs/293/108/png-transparent-computer-icons-document-management-system-document-file-format-directory-others-miscellaneous-purple-text.png" width=25px>  Descargar los archivos del proyecto </h2></summary> 
+####  <summary><h2 style="display: inline-block"><img src="https://w7.pngwing.com/pngs/293/108/png-transparent-computer-icons-document-management-system-document-file-format-directory-others-miscellaneous-purple-text.png" width=25px>  Descargar los archivos del proyecto </h2></summary> 
 Para finalizar, debemos descargar los archivos de este repositorio a su ordenador. Esto puede hacerse de manera manual, descargando los archivos uno por uno y colocandolos en una carpeta que luego se abrirá con Visual Studio Code, o incluso copiando el texto que se encuentra dentro de los archivos y pasarlos a archivos creados desde su computadora. Pero la manera más sencilla es haciendo uso de Git. Para esto, puede instalarlo desde la [Página oficial de Git](https://git-scm.com/).
 
 Una vez haya instalado correctamente Git abra la terminal de comandos, dirijase a una carpeta de su preferencia (donde guardará el programa) y ejecute los siguientes comandos:
-
+```
 git init
 git clone https://github.com/LeonardoVNC/SkyLink.git
+```
 
 Esto clonará todos los archivos y ramas del repositorio en su ordenador. Basta con arrastrar esta carpeta a Visual Studio Code para añadirla a su Espacio de Trabajo. Una vez ahi, abra todos los archivos para comprobar que se hayan descargado correctamente. 
 ## ¿Como ejecutamos el programa?
-Cuando esté seguro de que se han descargado correctamente todos los archivos del repositorio, dirijase a la clase "Menu.java" y ejecute el programa con el boton Run Java ubicado en la esquina superior derecha. Esto debería abrir una terminal de comandos donde se dispondrá de toda la información necesaria para que siga el uso del programa, contamos con un menú sensillo y amigable.
+Cuando esté seguro de que se han descargado correctamente todos los archivos del repositorio, dirijase a la clase "Menu.java" y ejecute el programa con el boton _Run Java_ ubicado en la esquina superior derecha. Esto debería abrir una terminal de comandos donde se dispondrá de toda la información necesaria para que siga el uso del programa, contamos con un menú sensillo y amigable.
 
 En caso de que no comprenda el uso del menú, explicamos a continuación su funcionamiento:
 ### Primer menú
